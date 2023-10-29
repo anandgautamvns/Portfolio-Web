@@ -1,24 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Suspense } from 'react';
 import './App.css';
+import Loading from './component/loading';
+const Page = React.lazy(() => import('./pages'));
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Anand Gautam
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Suspense fallback={<Loading/>}>
+        <Page />
+      </Suspense>
     </div>
   );
 }
